@@ -13,8 +13,15 @@ NC='\033[0m' # No Color
 
 ###############################
 
+currentUser="$(whoami)"
+
+
 # Update the package database
 sudo pacman -Sy
+
+# Add User to groups
+sudo usermod -aG video,audio $currentUser
+
 
 # Detect the GPU
 GPU=$(lspci | grep -E "VGA|3D")
